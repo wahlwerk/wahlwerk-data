@@ -4,12 +4,40 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project state
 
-This repository is **empty**: only `README.md` (a title) and `LICENSE`. There are no
-bundles, scripts, tests, build tooling or dependencies yet, so there are no commands to
-run. Do not invent a layout; build only what is asked for. The rest of this file is the
+This repository is **nearly empty**: `README.md`, `LICENSE` and one party registry,
+`parties/de/de.bund.json`. There are no election bundles, scripts, tests, build tooling or
+dependencies yet, so there are no commands to run. Do not invent a layout; build only what
+is asked for. The rest of this file (apart from "Party registries" below) is the
 role the sibling repos assign to this one, taken from `../wahlwerk/README.md`,
 `../wahlwerk/CLAUDE.md` and `../wahlwerk-execute/CLAUDE.md`. Check those before relying
 on it, since they are the source of truth and may have moved on.
+
+## Party registries
+
+`parties/<country>/<scope>.json` lists the parties for one scope; the file name is the
+scope identifier (`de.bund`). Layout:
+
+```json
+{
+  "schema": 1,
+  "name": "de.bund",
+  "description": "...",
+  "parties": {
+    "cdu": { "name": "Christlich Demokratische Union Deutschlands", "short_name": "CDU" }
+  }
+}
+```
+
+- `schema` is required. The engine reads only the versions it declares
+  (`wahlwerk.io.parties.SCHEMAS`); a format change bumps it.
+- `parties` is keyed by the party slug (lowercase ASCII, hyphens, umlauts transliterated:
+  `gruene`, `team-todenhoefer`); the slug is not repeated inside the entry.
+- An entry has `name` (required) and `short_name` (optional), both the official
+  spellings in correct German (UTF-8, not escaped). No other fields: the engine rejects
+  unknown ones. There is no `tags` field yet.
+- Files are UTF-8 with LF line endings and 2-space indentation.
+- The engine reads these with `PartyRegistry.from_json(path)` (reader in
+  `wahlwerk/src/wahlwerk/io/parties.py`).
 
 ## Role among the sibling repositories
 
