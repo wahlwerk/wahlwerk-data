@@ -1,0 +1,146 @@
+{
+  "name": "de.bund",
+  "description": "Parties that have contested Bundestag elections since 1949, keyed by party slug.",
+  "parties": {
+    "cdu": {
+      "name": "Christlich Demokratische Union Deutschlands",
+      "short_name": "CDU"
+    },
+    "csu": {
+      "name": "Christlich-Soziale Union in Bayern",
+      "short_name": "CSU"
+    },
+    "spd": {
+      "name": "Sozialdemokratische Partei Deutschlands",
+      "short_name": "SPD"
+    },
+    "gruene": {
+      "name": "BÜNDNIS 90/DIE GRÜNEN",
+      "short_name": "GRÜNE"
+    },
+    "linke": {
+      "name": "Die Linke",
+      "short_name": "Die Linke"
+    },
+    "afd": {
+      "name": "Alternative für Deutschland",
+      "short_name": "AfD"
+    },
+    "fdp": {
+      "name": "Freie Demokratische Partei",
+      "short_name": "FDP"
+    },
+    "bsw": {
+      "name": "Bündnis Sahra Wagenknecht",
+      "short_name": "BSW"
+    },
+    "fw": {
+      "name": "FREIE WÄHLER",
+      "short_name": "FREIE WÄHLER"
+    },
+    "ssw": {
+      "name": "Südschleswigscher Wählerverband",
+      "short_name": "SSW"
+    },
+    "volt": {
+      "name": "Volt Deutschland",
+      "short_name": "Volt"
+    },
+    "oedp": {
+      "name": "Ökologisch-Demokratische Partei",
+      "short_name": "ÖDP"
+    },
+    "piraten": {
+      "name": "Piratenpartei Deutschland",
+      "short_name": "PIRATEN"
+    },
+    "tierschutzpartei": {
+      "name": "Partei Mensch Umwelt Tierschutz",
+      "short_name": "Tierschutzpartei"
+    },
+    "partei": {
+      "name": "Die PARTEI",
+      "short_name": "Die PARTEI"
+    },
+    "mlpd": {
+      "name": "Marxistisch-Leninistische Partei Deutschlands",
+      "short_name": "MLPD"
+    },
+    "bp": {
+      "name": "Bayernpartei",
+      "short_name": "BP"
+    },
+    "bueso": {
+      "name": "Bürgerrechtsbewegung Solidarität",
+      "short_name": "BüSo"
+    },
+    "sgp": {
+      "name": "Sozialistische Gleichheitspartei",
+      "short_name": "SGP"
+    },
+    "diebasis": {
+      "name": "dieBasis",
+      "short_name": "dieBasis"
+    },
+    "mera25": {
+      "name": "MERA25",
+      "short_name": "MERA25"
+    },
+    "team-todenhoefer": {
+      "name": "Team Todenhöfer",
+      "short_name": "Team Todenhöfer"
+    },
+    "buendnis-c": {
+      "name": "Bündnis C",
+      "short_name": "Bündnis C"
+    },
+    "buendnis-deutschland": {
+      "name": "BÜNDNIS DEUTSCHLAND",
+      "short_name": "BÜNDNIS DEUTSCHLAND"
+    },
+    "werteunion": {
+      "name": "WerteUnion",
+      "short_name": "WerteUnion"
+    },
+    "pdh": {
+      "name": "Partei der Humanisten",
+      "short_name": "PdH"
+    },
+    "pdf": {
+      "name": "PdF",
+      "short_name": "PdF"
+    },
+    "menschliche-welt": {
+      "name": "MENSCHLICHE WELT",
+      "short_name": "MENSCHLICHE WELT"
+    },
+    "verjuengungsforschung": {
+      "name": "Verjüngungsforschung",
+      "short_name": "Verjüngungsforschung"
+    },
+    "dp": {
+      "name": "Deutsche Partei",
+      "short_name": "DP"
+    },
+    "kpd": {
+      "name": "Kommunistische Partei Deutschlands",
+      "short_name": "KPD"
+    },
+    "wav": {
+      "name": "Wirtschaftliche Aufbau-Vereinigung",
+      "short_name": "WAV"
+    },
+    "zentrum": {
+      "name": "Deutsche Zentrumspartei",
+      "short_name": "Zentrum"
+    },
+    "gb-bhe": {
+      "name": "Gesamtdeutscher Block/Bund der Heimatvertriebenen und Entrechteten",
+      "short_name": "GB/BHE"
+    },
+    "dkp-drp": {
+      "name": "Deutsche Konservative Partei/Deutsche Rechtspartei",
+      "short_name": "DKP/DRP"
+    }
+  }
+}
