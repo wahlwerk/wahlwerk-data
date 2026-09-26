@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "name": "de.bund",
-  "description": "Parties that have contested Bundestag elections since 1949, keyed by party slug.",
+  "description": "Parties that have contested elections in Germany, federal or Land, keyed by party slug.",
   "parties": {
     "cdu": {
       "name": "Christlich Demokratische Union Deutschlands",
@@ -56,7 +56,7 @@
       "short_name": "PIRATEN"
     },
     "tierschutzpartei": {
-      "name": "Partei Mensch Umwelt Tierschutz",
+      "name": "PARTEI MENSCH KLIMA TIERSCHUTZ",
       "short_name": "Tierschutzpartei"
     },
     "partei": {
@@ -80,7 +80,7 @@
       "short_name": "SGP"
     },
     "diebasis": {
-      "name": "dieBasis",
+      "name": "Basisdemokratische Partei Deutschland",
       "short_name": "dieBasis"
     },
     "mera25": {
@@ -108,7 +108,7 @@
       "short_name": "PdH"
     },
     "pdf": {
-      "name": "PdF",
+      "name": "Partei des Fortschritts",
       "short_name": "PdF"
     },
     "menschliche-welt": {
@@ -118,6 +118,18 @@
     "verjuengungsforschung": {
       "name": "Verjüngungsforschung",
       "short_name": "Verjüngungsforschung"
+    },
+    "gartenpartei": {
+      "name": "Gartenpartei",
+      "short_name": "Gartenpartei"
+    },
+    "tierschutzallianz": {
+      "name": "Allianz für Menschenrechte, Tier- und Naturschutz",
+      "short_name": "TIERSCHUTZALLIANZ"
+    },
+    "heimat": {
+      "name": "Die Heimat",
+      "short_name": "HEIMAT"
     },
     "dp": {
       "name": "Deutsche Partei",
