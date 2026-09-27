@@ -154,6 +154,53 @@
     "dkp-drp": {
       "name": "Deutsche Konservative Partei/Deutsche Rechtspartei",
       "short_name": "DKP/DRP"
+    },
+    "handwerker-partei-deutschland": {
+      "name": "Handwerker Partei Deutschland"
+    },
+    "kpd-1990": {
+      "name": "Kommunistische Partei Deutschland",
+      "short_name": "KPD"
+    },
+    "team-freiheit": {
+      "name": "Team Freiheit",
+      "short_name": "Team Freiheit"
+    },
+    "wld": {
+      "name": "WIR LEBEN DEMOKRATIE",
+      "short_name": "WLD"
+    },
+    "lfk": {
+      "name": "Lobbyisten für Kinder",
+      "short_name": "LfK"
+    },
+    "lkr": {
+      "name": "Liberal-Konservative Reformer",
+      "short_name": "LKR"
+    },
+    "fbm": {
+      "name": "Freie Bürger Mitteldeutschland",
+      "short_name": "FBM"
+    },
+    "tierschutz-hier": {
+      "name": "Aktion Partei für Tierschutz – TIERSCHUTZ hier!",
+      "short_name": "TIERSCHUTZ hier!"
+    },
+    "klimaliste-st": {
+      "name": "Klimaliste Sachsen-Anhalt",
+      "short_name": "Klimaliste ST"
+    },
+    "gesundheitsforschung": {
+      "name": "Partei für Gesundheitsforschung",
+      "short_name": "Gesundheitsforschung"
+    },
+    "wir2020": {
+      "name": "WiR2020",
+      "short_name": "WiR2020"
+    },
+    "npd": {
+      "name": "Nationaldemokratische Partei Deutschlands",
+      "short_name": "NPD"
     }
   }
 }

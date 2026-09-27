@@ -1,0 +1,14 @@
+schema = 2
+
+[source]
+publisher = "Der Landeswahlleiter des Landes Mecklenburg-Vorpommern"
+title = "Wahl zum Landtag von Mecklenburg-Vorpommern am 27. September 1998: endgültiges Ergebnis der Wahlkreise"
+url = "https://wahlen.mvnet.de/dateien/1998_land/L_WK_01.htm"
+licence = "keine Lizenz angegeben"
+attribution = "Der Landeswahlleiter des Landes Mecklenburg-Vorpommern; Datensatz: https://wahlen.mvnet.de/dateien/1998_land/L_WK_01.htm bis L_WK_36.htm; die Daten wurden geändert (in eine lange Tabelle je Wahlkreis umgeformt)."
+retrieved = 2026-09-27
+sha256 = "15af169571cdc6943510673a2aaeea562cf9c4eeaed590fae1479e74e7bb09ba"
+
+[levels]
+land = 2
+wahlkreis = 4

@@ -1,0 +1,19 @@
+schema = 2
+
+[source]
+publisher = "Landesamt für innere Verwaltung Mecklenburg-Vorpommern"
+title = "Wahl zum Landtag von Mecklenburg-Vorpommern am 17. September 2006: endgültiges Ergebnis der Wahlbezirke"
+url = "https://www.laiv-mv.de/static/LAIV/Wahlen/2-Landtagswahlen/2006/Ergebnisse/L_Wahlbezirke.csv"
+licence = "keine Lizenz angegeben"
+attribution = "Landesamt für innere Verwaltung Mecklenburg-Vorpommern; Datensatz: https://www.laiv-mv.de/static/LAIV/Wahlen/2-Landtagswahlen/2006/Ergebnisse/L_Wahlbezirke.csv; die Daten wurden geändert (in eine lange Tabelle je Wahlbezirk umgeformt)."
+retrieved = 2026-09-27
+sha256 = "8edd07ba15f02add5540fbc00da23a4747c521746c280eec4db71c2b5939c5e1"
+
+[levels]
+land = 2
+wahlkreis = 4
+wahlbezirk = 8
+briefwahlbezirk = 8
+
+[hierarchies.administrative]
+levels = ["land", "kreis", "amt", "gemeinde"]

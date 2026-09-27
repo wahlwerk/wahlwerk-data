@@ -1,0 +1,19 @@
+schema = 2
+
+[source]
+publisher = "Der Landeswahlleiter des Landes Mecklenburg-Vorpommern"
+title = "Wahl zum Landtag von Mecklenburg-Vorpommern am 16. Oktober 1994: endgültiges Ergebnis nach Wahlbezirken"
+url = "https://www.laiv-mv.de/static/LAIV/Wahlen/Dateien/Dokumente/Landtagswahlen/Ergebnisseite/LW%201994%20Endg%C3%BCltiges%20Ergebnis%20nach%20Wahlbezirken.xls"
+licence = "keine Lizenz angegeben"
+attribution = "Der Landeswahlleiter des Landes Mecklenburg-Vorpommern; Datensatz: https://www.laiv-mv.de/static/LAIV/Wahlen/Dateien/Dokumente/Landtagswahlen/Ergebnisseite/LW%201994%20Endg%C3%BCltiges%20Ergebnis%20nach%20Wahlbezirken.xls; die Daten wurden geändert (in eine lange Tabelle je Wahlbezirk umgeformt)."
+retrieved = 2026-09-27
+sha256 = "895e70b8be33524d2402e6792e83f460a8484fa9cd4d5584ea8f48a5d05c5612"
+
+[levels]
+land = 2
+wahlkreis = 4
+wahlbezirk = 8
+briefwahlbezirk = 8
+
+[hierarchies.administrative]
+levels = ["land", "kreis", "gemeinde"]

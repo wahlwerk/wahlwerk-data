@@ -1,0 +1,17 @@
+schema = 2
+
+[source]
+publisher = "Landesamt für innere Verwaltung Mecklenburg-Vorpommern"
+title = "Landtagswahl am 14. Oktober 1990 in Mecklenburg-Vorpommern (Gebietsstand Oktober 1994): endgültiges Ergebnis nach Gemeinden, ohne Briefwahl"
+url = "https://www.laiv-mv.de/static/LAIV/Wahlen/Dateien/Dokumente/Landtagswahlen/Ergebnisseite/LW%201990%20Endg%C3%BCltiges%20Ergebnis%20nach%20Gemeinden.xls"
+licence = "keine Lizenz angegeben"
+attribution = "Landesamt für innere Verwaltung Mecklenburg-Vorpommern; Datensatz: https://www.laiv-mv.de/static/LAIV/Wahlen/Dateien/Dokumente/Landtagswahlen/Ergebnisseite/LW%201990%20Endg%C3%BCltiges%20Ergebnis%20nach%20Gemeinden.xls; die Daten wurden geändert (in eine lange Tabelle je Gemeinde umgeformt)."
+retrieved = 2026-09-27
+sha256 = "1248f1588e800596a709b234d60be1dbf105f8c7d4c35a47c2a22ad46a2c6e86"
+
+[levels]
+land = 2
+gemeinde = 4
+
+[hierarchies.administrative]
+levels = ["land", "kreis", "gemeinde"]

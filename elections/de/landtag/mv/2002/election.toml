@@ -1,0 +1,19 @@
+schema = 2
+
+[source]
+publisher = "Landesamt für innere Verwaltung Mecklenburg-Vorpommern"
+title = "Wahl zum Landtag von Mecklenburg-Vorpommern am 22. September 2002: endgültiges Ergebnis der Wahlbezirke"
+url = "https://www.laiv-mv.de/static/LAIV/Wahlen/Dateien/Dokumente/Landtagswahlen/Ergebnisseite/LW%202002%20L_Wahlbezirke.csv"
+licence = "keine Lizenz angegeben"
+attribution = "Landesamt für innere Verwaltung Mecklenburg-Vorpommern; Datensatz: https://www.laiv-mv.de/static/LAIV/Wahlen/Dateien/Dokumente/Landtagswahlen/Ergebnisseite/LW%202002%20L_Wahlbezirke.csv; die Daten wurden geändert (in eine lange Tabelle je Wahlbezirk umgeformt)."
+retrieved = 2026-09-27
+sha256 = "c4c6b350fc987eb9ea3ea253d43f2bbc5b0fc9fe01d0fd513688a0f234da8d1f"
+
+[levels]
+land = 2
+wahlkreis = 4
+wahlbezirk = 8
+briefwahlbezirk = 8
+
+[hierarchies.administrative]
+levels = ["land", "kreis", "amt", "gemeinde"]
