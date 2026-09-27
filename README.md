@@ -10,49 +10,60 @@ stays small.
 | Path | What it holds |
 | --- | --- |
 | `parties/de/de.bund.json` | Parties that have contested elections in Germany, federal or Land |
+| `elections/de/landtag/mv/1990/` | Landtagswahl Mecklenburg-Vorpommern, 14 October 1990 (final result, per Gemeinde, without Briefwahl) |
+| `elections/de/landtag/mv/1994/` | Landtagswahl Mecklenburg-Vorpommern, 16 October 1994 (final result, per Wahlbezirk) |
+| `elections/de/landtag/mv/1998/` | Landtagswahl Mecklenburg-Vorpommern, 27 September 1998 (final result, per Wahlkreis) |
+| `elections/de/landtag/mv/2002/` | Landtagswahl Mecklenburg-Vorpommern, 22 September 2002 (final result, per Wahlbezirk) |
+| `elections/de/landtag/mv/2006/` | Landtagswahl Mecklenburg-Vorpommern, 17 September 2006 (final result, per Wahlbezirk) |
+| `elections/de/landtag/mv/2011/` | Landtagswahl Mecklenburg-Vorpommern, 4 September 2011 (final result, per Wahlbezirk) |
+| `elections/de/landtag/mv/2016/` | Landtagswahl Mecklenburg-Vorpommern, 4 September 2016 (final result, per Wahlbezirk) |
+| `elections/de/landtag/mv/2021/` | Landtagswahl Mecklenburg-Vorpommern, 26 September 2021 (final result, per Wahlbezirk) |
+| `elections/de/landtag/mv/2026/` | Landtagswahl Mecklenburg-Vorpommern, 20 September 2026 (preliminary result, per Wahlbezirk) |
 | `elections/de/landtag/st/2021/` | Landtagswahl Sachsen-Anhalt, 6 June 2021 (final result, per Wahlbezirk) |
 | `elections/de/landtag/st/2026/` | Landtagswahl Sachsen-Anhalt, 6 September 2026 (final result, per Wahlbezirk) |
-| `elections/de/landtag/mv/2026/` | Landtagswahl Mecklenburg-Vorpommern, 20 September 2026 (preliminary result, per Wahlbezirk) |
 
-### Election bundles
+Bundles live at `elections/<country>/<body>/<land>/<year>/`.
 
-A bundle is a directory with two files, read by the engine with
-`wahlwerk.io.read_bundle(path)`:
+## Election bundles
+
+A bundle is a directory read by the engine with `wahlwerk.io.read_bundle(path)`:
+
+```
+elections/de/landtag/st/2026/
+  election.toml        metadata, levels and hierarchies
+  tally.csv            the votes
+  administrative.csv   the administrative hierarchy (optional)
+  as_found/            the source files as downloaded
+    Ergebnisse_LT_2026.xlsx
+```
 
 - `election.toml`: `schema = 2`, a `[source]` table (`publisher`, `title`, `url`,
-  `licence`, `attribution`, `retrieved`, `sha256` of the original file), a `[levels]` table for the main hierarchy, the electoral one the unit
-  ids spell out: each level and how many dotted segments deep it is, broadest first
-  (`land = 2`, `wahlkreis = 4`, `wahlbezirk = 8`, `briefwahlbezirk = 8`); every row must
-  name a listed level and have its depth. Optionally, `[hierarchies.<name>]` tables
-  declare alternative hierarchies (`levels = ["land", "kreis", "gemeinde"]`), each with
-  its tree in `<name>.csv`. The engine still reads schema 1, which has neither.
+  `licence`, `attribution`, `retrieved`, `sha256` of the original file), a `[levels]`
+  table for the main hierarchy, the electoral one the unit ids spell out: each level and
+  how many dotted segments deep it is, broadest first (`land = 2`, `wahlkreis = 4`,
+  `wahlbezirk = 8`, `briefwahlbezirk = 8`); every row must name a listed level and have
+  its depth. Optionally, `[hierarchies.<name>]` tables declare alternative hierarchies
+  (`levels = ["land", "kreis", "gemeinde"]`), each with its tree in `<name>.csv`. The
+  engine still reads schema 1, which has neither.
+- `tally.csv`: the long vote table, one `TallyRow` per line, with the columns
+  `unit,level,kind,section,channel,party,candidate,option,count`; a blank cell is an
+  absent value.
 - `<name>.csv`, one per alternative hierarchy: columns `unit,level,parent`, every unit
   of the hierarchy and every counted unit, each with the unit it lies in (blank at the
   broadest level). `administrative.csv` places each Wahlbezirk in its Gemeinde, each
   Gemeinde in its Kreis, since Gemeinden like Halle span several Wahlkreise and so are
-  not in the unit ids' hierarchy. Mecklenburg-Vorpommern's adds the Amt between Kreis
-  and Gemeinde, because Briefwahl in amtsangehörige Gemeinden is counted per Amt: the
-  source files it under one pseudo-Gemeinde per Amt (`13071751`, "Briefwahl
-  Demmin-Land"), which the bundle keeps as a `gemeinde` unit under its Amt.
-- `tally.csv`: the long vote table, one `TallyRow` per line, with the columns
-  `unit,level,kind,section,channel,party,candidate,option,count`; a blank cell is an
-  absent value.
+  not in the unit ids' hierarchy. Mecklenburg-Vorpommern's (from 2002) adds the Amt
+  between Kreis and Gemeinde, because Briefwahl in amtsangehörige Gemeinden is counted
+  per Amt: the source files it under one pseudo-Gemeinde per Amt (`13071751`,
+  "Briefwahl Demmin-Land"), which the bundle keeps as a `gemeinde` unit under its Amt.
+  The 1998 bundle is per Wahlkreis only and has no administrative hierarchy.
 - `as_found/`: the source files exactly as downloaded (Excel, CSV, PDF), unchanged and
   under their original names. The engine does not read this folder; it is kept so the
   normalised files can be regenerated and checked against `sha256`.
 
 Bundles are generated by wahlwerk-data-processing, not edited by hand.
 
-## Licence
-
-The repository's own work is GPL-3.0 (`LICENSE`). Election data keeps the licence of its
-source, recorded with the required attribution in each bundle's `election.toml`; the
-Sachsen-Anhalt bundle, for example, is dl-de/by-2-0 from the Statistisches Landesamt
-Sachsen-Anhalt. The Mecklenburg-Vorpommern bundle's source states no licence ("(c) Der
-Landeswahlleiter Mecklenburg-Vorpommern"); its terms are still to be clarified with the
-Landeswahlleitung.
-
-### Party registries
+## Party registries
 
 Each file under `parties/` has a `schema` (format version), a `name` (the scope
 identifier), a `description` and a `parties` object keyed by party slug:
@@ -86,3 +97,12 @@ The engine rejects unknown fields, an unknown `schema` and a party slug listed t
 
 The engine finds this archive at `$WAHLWERK_DATA`, a sibling clone `../wahlwerk-data`, or
 `~/.cache/wahlwerk/data`, first hit wins. Cloning it next to `wahlwerk` is enough.
+
+## Licence
+
+The repository's own work is GPL-3.0 (`LICENSE`). Election data keeps the licence of its
+source, recorded with the required attribution in each bundle's `election.toml`. The
+Sachsen-Anhalt bundles are dl-de/by-2-0 from the Statistisches Landesamt Sachsen-Anhalt.
+The Mecklenburg-Vorpommern sources state no licence (2021 and 2026 carry only a
+copyright notice by the Landeswahlleitung); their terms are still to be clarified with
+the Landeswahlleitung. The same applies to the originals in each bundle's `as_found/`.
