@@ -37,17 +37,20 @@ elections/de/landtag/st/2026/
     Ergebnisse_LT_2026.xlsx
 ```
 
-- `election.toml`: `schema = 2`, a `[source]` table (`publisher`, `title`, `url`,
+- `election.toml`: `schema = 3`, a `[source]` table (`publisher`, `title`, `url`,
   `licence`, `attribution`, `retrieved`, `sha256` of the original file), a `[levels]`
   table for the main hierarchy, the electoral one the unit ids spell out: each level and
   how many dotted segments deep it is, broadest first (`land = 2`, `wahlkreis = 4`,
   `wahlbezirk = 8`, `briefwahlbezirk = 8`); every row must name a listed level and have
   its depth. Optionally, `[hierarchies.<name>]` tables declare alternative hierarchies
   (`levels = ["land", "kreis", "gemeinde"]`), each with its tree in `<name>.csv`. The
-  engine still reads schema 1, which has neither.
+  engine still reads schema 1, which has neither, and schema 2.
 - `tally.csv`: the long vote table, one `TallyRow` per line, with the columns
-  `unit,level,kind,section,channel,party,candidate,option,count`; a blank cell is an
-  absent value.
+  `unit,level,kind,section,channel,option,party,count`; a blank cell is an
+  absent value. `option` is what the votes count for: a party (`cdu`, its list or its
+  nominee), a candidate (`de.st.wk.002.einzelbewerber.1`) or an answer (`ja`); `party` is
+  the party the option stands for, blank for an Einzelbewerber or an answer. Schemas 1 and
+  2 had `party,candidate,option` instead; the engine still reads them.
 - `<name>.csv`, one per alternative hierarchy: columns `unit,level,parent`, every unit
   of the hierarchy and every counted unit, each with the unit it lies in (blank at the
   broadest level). `administrative.csv` places each Wahlbezirk in its Gemeinde, each
