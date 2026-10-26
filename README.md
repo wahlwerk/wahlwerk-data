@@ -19,7 +19,7 @@ stays small.
 | `elections/de/landtag/mv/2011/` | Landtagswahl Mecklenburg-Vorpommern, 4 September 2011 (final result, per Wahlbezirk) |
 | `elections/de/landtag/mv/2016/` | Landtagswahl Mecklenburg-Vorpommern, 4 September 2016 (final result, per Wahlbezirk) |
 | `elections/de/landtag/mv/2021/` | Landtagswahl Mecklenburg-Vorpommern, 26 September 2021 (final result, per Wahlbezirk) |
-| `elections/de/landtag/mv/2026/` | Landtagswahl Mecklenburg-Vorpommern, 20 September 2026 (preliminary result, per Wahlbezirk) |
+| `elections/de/landtag/mv/2026/` | Landtagswahl Mecklenburg-Vorpommern, 20 September 2026 (final result, per Wahlbezirk) |
 | `elections/de/landtag/st/2021/` | Landtagswahl Sachsen-Anhalt, 6 June 2021 (final result, per Wahlbezirk) |
 | `elections/de/landtag/st/2026/` | Landtagswahl Sachsen-Anhalt, 6 September 2026 (final result, per Wahlbezirk) |
 
