@@ -1,0 +1,23 @@
+schema = 3
+
+[source]
+publisher = "Amt für Statistik Berlin-Brandenburg / Der Landeswahlleiter für Berlin"
+title = "Endgültiges Ergebnis für die Wahlen zum 20. Abgeordnetenhaus und zu den Bezirksverordnetenversammlungen im Land Berlin am 20. September 2026"
+url = "https://www.wahlen-berlin.de/wahlen/BE2026/Afspraes/AGH/DL/DL_BE_AGHBVV2026.xlsx"
+licence = "CC-BY-3.0-DE"
+attribution = "Amt für Statistik Berlin-Brandenburg, Potsdam, 2026; Lizenz: Creative Commons Namensnennung 3.0 Deutschland (CC BY 3.0 DE), http://creativecommons.org/licenses/by/3.0/de/; Datensatz: https://www.wahlen-berlin.de/wahlen/BE2026/Afspraes/AGH/DL/DL_BE_AGHBVV2026.xlsx; die Daten wurden geändert (Abgeordnetenhauswahl in eine lange Tabelle je Wahlbezirk umgeformt)."
+retrieved = 2026-10-26
+sha256 = "9f1ee12ff445b328c884b52c70ef31b8c38a9ece7f4400a3f2588d9d82d11560"
+
+[levels]
+land = 2
+bezirk = 4
+wahlkreis = 6
+wahlbezirk = 8
+briefwahlbezirk = 8
+
+[hierarchies.stadthaelfte]
+levels = ["land", "stadthaelfte"]
+
+[hierarchies.bundestagswahlkreis]
+levels = ["land", "bundestagswahlkreis"]

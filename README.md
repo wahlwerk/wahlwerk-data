@@ -10,6 +10,7 @@ stays small.
 | Path | What it holds |
 | --- | --- |
 | `parties/de/de.bund.json` | Parties that have contested elections in Germany, federal or Land |
+| `elections/de/landtag/be/2026/` | Wahl zum Abgeordnetenhaus von Berlin, 20 September 2026 (final result, per Wahlbezirk) |
 | `elections/de/landtag/mv/1990/` | Landtagswahl Mecklenburg-Vorpommern, 14 October 1990 (final result, per Gemeinde, without Briefwahl) |
 | `elections/de/landtag/mv/1994/` | Landtagswahl Mecklenburg-Vorpommern, 16 October 1994 (final result, per Wahlbezirk) |
 | `elections/de/landtag/mv/1998/` | Landtagswahl Mecklenburg-Vorpommern, 27 September 1998 (final result, per Wahlkreis) |
@@ -60,6 +61,10 @@ elections/de/landtag/st/2026/
   per Amt: the source files it under one pseudo-Gemeinde per Amt (`13071751`,
   "Briefwahl Demmin-Land"), which the bundle keeps as a `gemeinde` unit under its Amt.
   The 1998 bundle is per Wahlkreis only and has no administrative hierarchy.
+  Berlin's ids carry the Bezirk as a level (`de.be.bez.01.wk.001.wbz.101`: `land = 2`,
+  `bezirk = 4`, `wahlkreis = 6`), since its Wahlkreise are numbered per Bezirk and
+  Bezirkslisten are counted along it; its alternative hierarchies are `stadthaelfte`
+  (Ost/West) and `bundestagswahlkreis`.
 - `as_found/`: the source files exactly as downloaded (Excel, CSV, PDF), unchanged and
   under their original names. The engine does not read this folder; it is kept so the
   normalised files can be regenerated and checked against `sha256`.
@@ -106,6 +111,8 @@ The engine finds this archive at `$WAHLWERK_DATA`, a sibling clone `../wahlwerk-
 The repository's own work is GPL-3.0 (`LICENSE`). Election data keeps the licence of its
 source, recorded with the required attribution in each bundle's `election.toml`. The
 Sachsen-Anhalt bundles are dl-de/by-2-0 from the Statistisches Landesamt Sachsen-Anhalt.
+The Berlin bundle is CC BY 3.0 DE from the Amt für Statistik Berlin-Brandenburg (stated
+in the workbook's Impressum).
 The Mecklenburg-Vorpommern sources state no licence (2021 and 2026 carry only a
 copyright notice by the Landeswahlleitung); their terms are still to be clarified with
 the Landeswahlleitung. The same applies to the originals in each bundle's `as_found/`.
