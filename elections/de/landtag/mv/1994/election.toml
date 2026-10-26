@@ -1,4 +1,4 @@
-schema = 3
+schema = 4
 
 [source]
 publisher = "Der Landeswahlleiter des Landes Mecklenburg-Vorpommern"
@@ -9,11 +9,8 @@ attribution = "Der Landeswahlleiter des Landes Mecklenburg-Vorpommern; Datensatz
 retrieved = 2026-09-27
 sha256 = "895e70b8be33524d2402e6792e83f460a8484fa9cd4d5584ea8f48a5d05c5612"
 
-[levels]
-land = 2
-wahlkreis = 4
-wahlbezirk = 8
-briefwahlbezirk = 8
+[hierarchies.electoral]
+levels = ["land", "wahlkreis"]
 
 [hierarchies.administrative]
 levels = ["land", "kreis", "gemeinde"]

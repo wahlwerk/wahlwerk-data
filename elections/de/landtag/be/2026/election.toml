@@ -1,4 +1,4 @@
-schema = 3
+schema = 4
 
 [source]
 publisher = "Amt für Statistik Berlin-Brandenburg / Der Landeswahlleiter für Berlin"
@@ -9,12 +9,8 @@ attribution = "Amt für Statistik Berlin-Brandenburg, Potsdam, 2026; Lizenz: Cre
 retrieved = 2026-10-26
 sha256 = "9f1ee12ff445b328c884b52c70ef31b8c38a9ece7f4400a3f2588d9d82d11560"
 
-[levels]
-land = 2
-bezirk = 4
-wahlkreis = 6
-wahlbezirk = 8
-briefwahlbezirk = 8
+[hierarchies.electoral]
+levels = ["land", "bezirk", "wahlkreis"]
 
 [hierarchies.stadthaelfte]
 levels = ["land", "stadthaelfte"]

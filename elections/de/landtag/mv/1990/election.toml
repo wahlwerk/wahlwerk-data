@@ -1,4 +1,4 @@
-schema = 3
+schema = 4
 
 [source]
 publisher = "Landesamt für innere Verwaltung Mecklenburg-Vorpommern"
@@ -9,9 +9,8 @@ attribution = "Landesamt für innere Verwaltung Mecklenburg-Vorpommern; Datensat
 retrieved = 2026-09-27
 sha256 = "1248f1588e800596a709b234d60be1dbf105f8c7d4c35a47c2a22ad46a2c6e86"
 
-[levels]
-land = 2
-gemeinde = 4
+[hierarchies.electoral]
+levels = ["land"]
 
 [hierarchies.administrative]
 levels = ["land", "kreis", "gemeinde"]

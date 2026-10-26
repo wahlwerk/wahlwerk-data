@@ -31,42 +31,56 @@ A bundle is a directory read by the engine with `wahlwerk.io.read_bundle(path)`:
 
 ```
 elections/de/landtag/st/2026/
-  election.toml        metadata, levels and hierarchies
+  election.toml        metadata and hierarchies
   tally.csv            the votes
+  options.csv          every option and the party it stands for
+  electoral.csv        the electoral hierarchy: Land, Wahlkreis
   administrative.csv   the administrative hierarchy (optional)
   as_found/            the source files as downloaded
     Ergebnisse_LT_2026.xlsx
 ```
 
-- `election.toml`: `schema = 3`, a `[source]` table (`publisher`, `title`, `url`,
-  `licence`, `attribution`, `retrieved`, `sha256` of the original file), a `[levels]`
-  table for the main hierarchy, the electoral one the unit ids spell out: each level and
-  how many dotted segments deep it is, broadest first (`land = 2`, `wahlkreis = 4`,
-  `wahlbezirk = 8`, `briefwahlbezirk = 8`); every row must name a listed level and have
-  its depth. Optionally, `[hierarchies.<name>]` tables declare alternative hierarchies
-  (`levels = ["land", "kreis", "gemeinde"]`), each with its tree in `<name>.csv`. The
-  engine still reads schema 1, which has neither, and schema 2.
+Every bundle is schema 4 (decision 0009 in `.github-private`), converted from schema 3
+on 2026-10-26 by `wahlwerk_data_processing.migrate` without loss: the same counts per
+Wahlkreis and Land, the same Landtag seats from 2011 on, mandate by mandate.
+
+- `election.toml`: `schema = 4`, a `[source]` table (`publisher`, `title`, `url`,
+  `licence`, `attribution`, `retrieved`, `sha256` of the original file) and one
+  `[hierarchies.<name>]` table per hierarchy, its levels broadest first, each with its
+  tree in `<name>.csv`: `electoral` (`levels = ["land", "wahlkreis"]`), the one the laws
+  count along, and the alternative ones (`levels = ["land", "kreis", "gemeinde"]`). The
+  engine still reads schemas 1 to 3, whose `[levels]` table spelled the electoral
+  hierarchy into the unit ids.
 - `tally.csv`: the long vote table, one `TallyRow` per line, with the columns
-  `unit,level,kind,section,channel,option,party,count`; a blank cell is an
-  absent value. `option` is what the votes count for: a party (`cdu`, its list or its
-  nominee), a candidate (`de.st.wk.002.einzelbewerber.1`) or an answer (`ja`); `party` is
-  the party the option stands for, blank for an Einzelbewerber or an answer. Schemas 1 and
-  2 had `party,candidate,option` instead; the engine still reads them.
-- `<name>.csv`, one per alternative hierarchy: columns `unit,level,parent`, every unit
-  of the hierarchy and every counted unit, each with the unit it lies in (blank at the
-  broadest level). `administrative.csv` places each Wahlbezirk in its Gemeinde, each
-  Gemeinde in its Kreis, since Gemeinden like Halle span several Wahlkreise and so are
-  not in the unit ids' hierarchy. Mecklenburg-Vorpommern's (from 2002) adds the Amt
+  `unit,level,kind,section,channel,option,count`; a blank cell is an absent value.
+  `unit` names its unit only (`de.st.gem.15081026.wbz.000001`: Land, Gemeinde,
+  Wahlbezirk), never the Wahlkreis it lies in, which is law and is in `electoral.csv`.
+  Only a unit the source numbers within its Wahlkreis keeps it in its id, since two units
+  would otherwise share one (two Briefwahlbezirke 901 of Gemeinde 15088295 in
+  Sachsen-Anhalt 2021: `de.st.wk.029.gem.15088295.wbz.000901` and `…wk.034…`). `option`
+  is what the votes count for: a party (`cdu`, its list or its nominee), a candidate
+  (`de.st.wk.002.einzelbewerber.1`) or an answer (`ja`).
+- `options.csv`: columns `option,party`, every option the tally counts votes for, once,
+  with the party it stands for, blank for an Einzelbewerber or an answer.
+- `<name>.csv`, one per hierarchy: columns `unit,level,parent`, every unit of the
+  hierarchy and every counted unit, each with the unit it lies in (blank at the broadest
+  level). `electoral.csv` places each Wahlbezirk in its Wahlkreis and each Wahlkreis in the
+  Land; where the rows are the Wahlkreise themselves (Mecklenburg-Vorpommern 1998) or
+  Gemeinden (1990), its only level is the Land. `administrative.csv` places each
+  Wahlbezirk in its Gemeinde, each Gemeinde in its Kreis, since Gemeinden like Halle span
+  several Wahlkreise. Mecklenburg-Vorpommern's (from 2002) adds the Amt
   between Kreis and Gemeinde, because Briefwahl in amtsangehörige Gemeinden is counted
   per Amt: the source files it under one pseudo-Gemeinde per Amt (`13071751`,
   "Briefwahl Demmin-Land"), which the bundle keeps as a `gemeinde` unit under its Amt.
   The 1998 bundle is per Wahlkreis only and has no administrative hierarchy.
-  Berlin's ids carry the Bezirk as a level (`de.be.bez.01.wk.001.wbz.101`: `land = 2`,
-  `bezirk = 4`, `wahlkreis = 6`), since its Wahlkreise are numbered per Bezirk and
-  Bezirkslisten are counted along it; its alternative hierarchies are `stadthaelfte`
-  (Ost/West) and `bundestagswahlkreis`.
+  Berlin's electoral hierarchy has the Bezirk between Land and Wahlkreis
+  (`land`, `bezirk`, `wahlkreis`), since its Wahlkreise are numbered per Bezirk and
+  Bezirkslisten are counted along it; its ids keep the Bezirk
+  (`de.be.bez.01.wbz.101`), and its alternative hierarchies are `stadthaelfte` (Ost/West)
+  and `bundestagswahlkreis`.
 - `as_found/`: the source files exactly as downloaded (Excel, CSV, PDF), unchanged and
-  under their original names. The engine does not read this folder; it is kept so the
+  under their original names (but see the note on line endings in
+  wahlwerk-data-processing's CLAUDE.md: git stores the Sachsen-Anhalt 2021 CSVs with LF). The engine does not read this folder; it is kept so the
   normalised files can be regenerated and checked against `sha256`.
 
 Bundles are generated by wahlwerk-data-processing, not edited by hand.
